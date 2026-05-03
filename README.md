@@ -23,20 +23,6 @@
 
 ---
 
-## Structure
-
-```
-infra/
-  01_variables.tf       # project name, AWS region
-  02_terraform.tf       # provider and backend config
-  03_main.tf            # aws_vpc resource definition
-  04_main_import.tf     # import block for method 2
-docs/
-  phase.md              # step-by-step walkthrough with commands and output
-```
-
----
-
 ## Key Steps
 
 ### `terraform import` Command
@@ -66,8 +52,8 @@ import {
 
 ```sh
 terraform refresh
+terraform state list
 terraform plan   # expect: no changes
-terraform apply
 ```
 
 ---
@@ -86,7 +72,6 @@ import {
 ```sh
 terraform plan -generate-config-out=generated.tf   # creates resource block
 terraform refresh
+terraform state list
 terraform plan   # expect: no changes
 ```
-
----
